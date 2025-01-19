@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static utils.Constants.AGED_BRIE;
 import static utils.Constants.ORDINARY_ITEM;
+import static utils.Constants.SULFURAS;
 
 class GildedRoseTest {
 
@@ -105,5 +106,20 @@ class GildedRoseTest {
         app.updateQuality();
         assertEquals(9, app.items[0].sellIn);
         assertEquals(50, app.items[0].quality);
+    }
+
+    /**
+     * Sulfuras item
+     * quality do not change is always 80
+     * sellIn do not change
+     */
+
+    @Test
+    void qualityAndSellInForSulfurasItem() {
+        Item[] items = new Item[] { new Item(SULFURAS, 0, 80) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(0, app.items[0].sellIn);
+        assertEquals(80, app.items[0].quality);
     }
 }
