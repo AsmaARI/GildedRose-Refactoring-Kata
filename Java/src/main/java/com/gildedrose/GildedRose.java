@@ -2,6 +2,7 @@ package com.gildedrose;
 
 import static utils.Constants.AGED_BRIE;
 import static utils.Constants.BACKSTAGE_PASSES;
+import static utils.Constants.CONJURED;
 import static utils.Constants.MAX_QUALITY;
 import static utils.Constants.MIN_QUALITY;
 import static utils.Constants.SULFURAS;
@@ -25,9 +26,19 @@ class GildedRose {
             case AGED_BRIE-> updateAgedBrie(item);
             case BACKSTAGE_PASSES-> updateBackStagePassItem(item);
             case SULFURAS -> {}
+            case CONJURED -> updateConjuredItem(item);
             default -> updateOrdinaryItem(item);
         }
 
+    }
+
+    private void updateConjuredItem(Item item) {
+        if (item.sellIn > 0) {
+            item.quality = Math.max(item.quality - 2, MIN_QUALITY);
+        } else {
+            item.quality = Math.max(item.quality - 4, MIN_QUALITY);
+        }
+        item.sellIn = item.sellIn - 1;
     }
 
     private void updateOrdinaryItem(Item item) {
