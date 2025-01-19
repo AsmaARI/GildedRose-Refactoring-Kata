@@ -3,6 +3,7 @@ package com.gildedrose;
 import static utils.Constants.AGED_BRIE;
 import static utils.Constants.BACKSTAGE_PASSES;
 import static utils.Constants.MAX_QUALITY;
+import static utils.Constants.MIN_QUALITY;
 import static utils.Constants.SULFURAS;
 
 class GildedRose {
@@ -50,27 +51,19 @@ class GildedRose {
 
     }
 
-    private static void updateBackStagePassItem(Item item) {
-        if (item.quality < 50) {
-            item.quality = item.quality + 1;
-
-            if (item.sellIn < 11) {
-                if (item.quality < 50) {
-                    item.quality = item.quality + 1;
-                }
-            }
-
-            if (item.sellIn < 6) {
-                if (item.quality < 50) {
-                    item.quality = item.quality + 1;
-                }
-            }
+    private void updateBackStagePassItem(Item item) {
+        item.quality = Math.min(item.quality + 1, MAX_QUALITY);
+        if (item.sellIn < 11) {
+            item.quality = Math.min(item.quality + 1, MAX_QUALITY);
+        }
+        if (item.sellIn < 6) {
+            item.quality = Math.min(item.quality + 1, MAX_QUALITY);
         }
 
         item.sellIn = item.sellIn - 1;
 
         if (item.sellIn < 0) {
-            item.quality = 0;
+            item.quality = MIN_QUALITY;
         }
     }
 
