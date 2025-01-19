@@ -20,16 +20,13 @@ class GildedRose {
     }
 
     private void updateItem(Item item) {
-        boolean isAgedBrieItem = AGED_BRIE.equals(item.name);
-        boolean isBackStagePass = BACKSTAGE_PASSES.equals(item.name);
-        boolean isSulfurasItem = SULFURAS.equals(item.name);
-        if (isAgedBrieItem) {
-            updateAgedBrie(item);
-        } else if (isBackStagePass) {
-                updateBackStagePassItem(item);
-            } else if (!isSulfurasItem)   {
-                    updateOrdinaryItem(item);
-                }
+        String itemName = item.name;
+        switch (itemName) {
+            case AGED_BRIE-> updateAgedBrie(item);
+            case BACKSTAGE_PASSES-> updateBackStagePassItem(item);
+            case SULFURAS -> {}
+            default -> updateOrdinaryItem(item);
+        }
 
     }
 
