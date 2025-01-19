@@ -2,6 +2,7 @@ package com.gildedrose;
 
 import static utils.Constants.AGED_BRIE;
 import static utils.Constants.BACKSTAGE_PASSES;
+import static utils.Constants.MAX_QUALITY;
 import static utils.Constants.SULFURAS;
 
 class GildedRose {
@@ -66,17 +67,12 @@ class GildedRose {
     }
 
     private void updateAgedBrie(Item item) {
-        if (item.quality < 50) {
-            item.quality = item.quality + 1;
-
-        }
+        item.quality = Math.min(item.quality + 1, MAX_QUALITY);
 
         item.sellIn = item.sellIn - 1;
 
         if (item.sellIn < 0) {
-            if (item.quality < 50) {
-                item.quality = item.quality + 1;
-            }
+            item.quality = Math.min(item.quality + 1, MAX_QUALITY);
         }
     }
 
