@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static utils.Constants.AGED_BRIE;
 import static utils.Constants.BACKSTAGE_PASSES;
+import static utils.Constants.CONJURED;
 import static utils.Constants.ORDINARY_ITEM;
 import static utils.Constants.SULFURAS;
 
@@ -182,6 +183,36 @@ class GildedRoseTest {
         app.updateQuality();
         assertEquals(-2, app.items[0].sellIn);
         assertEquals(0, app.items[0].quality);
+    }
+
+    /**
+     * Conjured item
+     * Expiration has not passed
+     * quality decrease by 2 (twice more than ordinary item)
+     * sellIn decrease by 1
+     */
+    @Test
+    void qualityAndSellInForConjuredItem() {
+        Item[] items = new Item[] { new Item(CONJURED, 5, 15) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(4, app.items[0].sellIn);
+        assertEquals(13, app.items[0].quality);
+    }
+
+    /**
+     * Conjured item
+     * Expiration has passed
+     * quality decrease by 4 (twice more than ordinary item)
+     * sellIn decrease by 1
+     */
+    @Test
+    void qualityAndSellInForConjuredItemWithPassedExpiration() {
+        Item[] items = new Item[] { new Item(CONJURED, -1, 15) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(-2, app.items[0].sellIn);
+        assertEquals(11, app.items[0].quality);
     }
 
 }
