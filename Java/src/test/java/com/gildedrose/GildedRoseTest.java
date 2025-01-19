@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static utils.Constants.AGED_BRIE;
+import static utils.Constants.BACKSTAGE_PASSES;
 import static utils.Constants.ORDINARY_ITEM;
 import static utils.Constants.SULFURAS;
 
@@ -122,4 +123,65 @@ class GildedRoseTest {
         assertEquals(0, app.items[0].sellIn);
         assertEquals(80, app.items[0].quality);
     }
+
+    /**
+     * Backstage passes item
+     * Expiration more than 10 days
+     * quality increase by 1
+     * sellIn decrease by 1
+     */
+    @Test
+    void qualityAndSellInForBackstageItem() {
+        Item[] items = new Item[] { new Item(BACKSTAGE_PASSES, 13, 15) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(12, app.items[0].sellIn);
+        assertEquals(16, app.items[0].quality);
+    }
+
+    /**
+     * Backstage passes item
+     * Expiration 10 days or less
+     * quality increase by 2
+     * sellIn decrease by 1
+     */
+    @Test
+    void qualityAndSellInForBackstageItemWithLessThan_10_Days() {
+        Item[] items = new Item[] { new Item(BACKSTAGE_PASSES, 9, 15) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(8, app.items[0].sellIn);
+        assertEquals(17, app.items[0].quality);
+    }
+
+    /**
+     * Backstage passes item
+     * Expiration 5 days or less
+     * quality increase by 3
+     * sellIn decrease by 1
+     */
+    @Test
+    void qualityAndSellInForBackstageItemWithLessThan_5_Days() {
+        Item[] items = new Item[] { new Item(BACKSTAGE_PASSES, 4, 15) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(3, app.items[0].sellIn);
+        assertEquals(18, app.items[0].quality);
+    }
+
+    /**
+     * Backstage passes item
+     * Expiration has passed
+     * quality drop to 0
+     * sellIn decrease by 1
+     */
+    @Test
+    void qualityAndSellInForBackstageItemAfterConcert() {
+        Item[] items = new Item[] { new Item(BACKSTAGE_PASSES, -1, 15) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(-2, app.items[0].sellIn);
+        assertEquals(0, app.items[0].quality);
+    }
+
 }
