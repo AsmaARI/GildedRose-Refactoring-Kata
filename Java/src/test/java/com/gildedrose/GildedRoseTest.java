@@ -16,7 +16,7 @@ class GildedRoseTest {
         Item[] items = new Item[] { new Item(ORDINARY_ITEM, 0, 0) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
-        assertEquals(ORDINARY_ITEM, app.items[0].name);
+        assertEquals(ORDINARY_ITEM, app.getItems()[0].name);
     }
 
     /**
@@ -30,8 +30,8 @@ class GildedRoseTest {
         Item[] items = new Item[] { new Item(ORDINARY_ITEM, 10, 10) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
-        assertEquals(9, app.items[0].sellIn);
-        assertEquals(9, app.items[0].quality);
+        assertEquals(9, app.getItems()[0].sellIn);
+        assertEquals(9, app.getItems()[0].quality);
     }
 
     /**
@@ -45,8 +45,8 @@ class GildedRoseTest {
         Item[] items = new Item[] { new Item(ORDINARY_ITEM, 0, 4) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
-        assertEquals(-1, app.items[0].sellIn);
-        assertEquals(2, app.items[0].quality);
+        assertEquals(-1, app.getItems()[0].sellIn);
+        assertEquals(2, app.getItems()[0].quality);
     }
 
     /**
@@ -61,8 +61,8 @@ class GildedRoseTest {
         Item[] items = new Item[] { new Item(ORDINARY_ITEM, 0, 1) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
-        assertEquals(-1, app.items[0].sellIn);
-        assertEquals(0, app.items[0].quality);
+        assertEquals(-1, app.getItems()[0].sellIn);
+        assertEquals(0, app.getItems()[0].quality);
     }
 
     /**
@@ -76,8 +76,8 @@ class GildedRoseTest {
         Item[] items = new Item[] { new Item(AGED_BRIE, 10, 10) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
-        assertEquals(9, app.items[0].sellIn);
-        assertEquals(11, app.items[0].quality);
+        assertEquals(9, app.getItems()[0].sellIn);
+        assertEquals(11, app.getItems()[0].quality);
     }
 
     /**
@@ -91,8 +91,8 @@ class GildedRoseTest {
         Item[] items = new Item[] { new Item(AGED_BRIE, -2, 4) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
-        assertEquals(-3, app.items[0].sellIn);
-        assertEquals(6, app.items[0].quality);
+        assertEquals(-3, app.getItems()[0].sellIn);
+        assertEquals(6, app.getItems()[0].quality);
     }
 
     /**
@@ -106,8 +106,8 @@ class GildedRoseTest {
         Item[] items = new Item[] { new Item(AGED_BRIE, 10, 50) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
-        assertEquals(9, app.items[0].sellIn);
-        assertEquals(50, app.items[0].quality);
+        assertEquals(9, app.getItems()[0].sellIn);
+        assertEquals(50, app.getItems()[0].quality);
     }
 
     /**
@@ -121,8 +121,8 @@ class GildedRoseTest {
         Item[] items = new Item[] { new Item(SULFURAS, 0, 80) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
-        assertEquals(0, app.items[0].sellIn);
-        assertEquals(80, app.items[0].quality);
+        assertEquals(0, app.getItems()[0].sellIn);
+        assertEquals(80, app.getItems()[0].quality);
     }
 
     /**
@@ -136,8 +136,8 @@ class GildedRoseTest {
         Item[] items = new Item[] { new Item(BACKSTAGE_PASSES, 13, 15) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
-        assertEquals(12, app.items[0].sellIn);
-        assertEquals(16, app.items[0].quality);
+        assertEquals(12, app.getItems()[0].sellIn);
+        assertEquals(16, app.getItems()[0].quality);
     }
 
     /**
@@ -151,8 +151,8 @@ class GildedRoseTest {
         Item[] items = new Item[] { new Item(BACKSTAGE_PASSES, 9, 15) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
-        assertEquals(8, app.items[0].sellIn);
-        assertEquals(17, app.items[0].quality);
+        assertEquals(8, app.getItems()[0].sellIn);
+        assertEquals(17, app.getItems()[0].quality);
     }
 
     /**
@@ -166,8 +166,8 @@ class GildedRoseTest {
         Item[] items = new Item[] { new Item(BACKSTAGE_PASSES, 4, 15) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
-        assertEquals(3, app.items[0].sellIn);
-        assertEquals(18, app.items[0].quality);
+        assertEquals(3, app.getItems()[0].sellIn);
+        assertEquals(18, app.getItems()[0].quality);
     }
 
     /**
@@ -181,8 +181,8 @@ class GildedRoseTest {
         Item[] items = new Item[] { new Item(BACKSTAGE_PASSES, -1, 15) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
-        assertEquals(-2, app.items[0].sellIn);
-        assertEquals(0, app.items[0].quality);
+        assertEquals(-2, app.getItems()[0].sellIn);
+        assertEquals(0, app.getItems()[0].quality);
     }
 
     /**
@@ -196,8 +196,8 @@ class GildedRoseTest {
         Item[] items = new Item[] { new Item(CONJURED, 5, 15) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
-        assertEquals(4, app.items[0].sellIn);
-        assertEquals(13, app.items[0].quality);
+        assertEquals(4, app.getItems()[0].sellIn);
+        assertEquals(13, app.getItems()[0].quality);
     }
 
     /**
@@ -211,8 +211,8 @@ class GildedRoseTest {
         Item[] items = new Item[] { new Item(CONJURED, -1, 15) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
-        assertEquals(-2, app.items[0].sellIn);
-        assertEquals(11, app.items[0].quality);
+        assertEquals(-2, app.getItems()[0].sellIn);
+        assertEquals(11, app.getItems()[0].quality);
     }
 
 }

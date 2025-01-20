@@ -8,10 +8,14 @@ import static utils.Constants.MIN_QUALITY;
 import static utils.Constants.SULFURAS;
 
 class GildedRose {
-    Item[] items;
+    private Item[] items;
 
     public GildedRose(Item[] items) {
         this.items = items;
+    }
+
+    public Item[] getItems() {
+        return items;
     }
 
     public void updateQuality() {
