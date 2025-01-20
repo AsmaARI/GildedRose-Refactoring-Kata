@@ -27,11 +27,20 @@ class GildedRose {
     private void updateItem(Item item) {
         String itemName = item.name;
         switch (itemName) {
-            case AGED_BRIE-> updateAgedBrie(item);
-            case BACKSTAGE_PASSES-> updateBackStagePassItem(item);
-            case SULFURAS -> {}
-            case CONJURED -> updateConjuredItem(item);
-            default -> updateOrdinaryItem(item);
+                case AGED_BRIE:
+                    updateAgedBrie(item);
+                    break;
+                case BACKSTAGE_PASSES:
+                    updateBackStagePassItem(item);
+                    break;
+                case SULFURAS:
+                    break;
+                case CONJURED:
+                    updateConjuredItem(item);
+                    break;
+                default:
+                    updateOrdinaryItem(item);
+                    break;
         }
 
     }
